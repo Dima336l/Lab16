@@ -6,13 +6,16 @@
 template <typename T>
 
 class Node {
-private:
+public:
   T data;
   Node* link;
-public:
   Node(T n) {
     data = n;
     link = NULL;
+  }
+
+  Node() {
+    
   }
 
   void setData(T item) {
@@ -22,5 +25,6 @@ public:
   void setLink(Node* node) {
     this.link = node;
   }
+};
 
 #endif
