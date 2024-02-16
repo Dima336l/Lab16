@@ -1,6 +1,6 @@
 #include "Main.h"
 
-int main() {
+void testStack() {
   Stack <int>* stack = new Stack<int>();
   stack->push(5);
   stack->push(6);
@@ -14,5 +14,9 @@ int main() {
   stack->pop();
   stack->pop();
   stack->display();
+}
+
+int main() {
+  testStack();
   
 }

@@ -9,10 +9,10 @@ template <typename T>
 class Stack {
 private:
   Node<T>* top;
+public:
   isEmpty() {
     return top == NULL;
   }
-public:
   Stack () { top = NULL; }
   void push( T item) {
     Node <T>* node = new Node (item);
@@ -47,11 +47,13 @@ public:
 	temp = temp->link;
 	if (temp != NULL) {
 	  std::cout << " -> ";
-	}
-	
+	}	
       }
       std::cout << std::endl;
     }
+  }
+  T returnTop() {
+    return top->data;
   }
 };
 
