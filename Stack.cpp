@@ -18,7 +18,6 @@ public:
     Node <T>* node = new Node (item);
     if (!node) {
       std::cout <<"Stack Overflow" << std::endl;
-      exit(1);
     }
     node->data = item;
     node->link = top;
@@ -28,7 +27,6 @@ public:
     Node<T>* temp;
     if (isEmpty()) {
       std::cout << "Stack Underflow" << std::endl;
-      exit(1);
     } else {
       temp = top;
       top = top -> link;
@@ -39,7 +37,6 @@ public:
     Node<T>* temp;
     if (isEmpty()) {
       std::cout << "Stack Underflow" << std::endl;
-      exit(1);
     } else {
       temp = top;
       while (temp != NULL) {

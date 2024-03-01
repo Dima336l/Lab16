@@ -16,7 +16,18 @@ void testStack() {
   stack->display();
 }
 
+void testDoubleLinkedList() {
+  DoubleLinkedList<int>* list = new DoubleLinkedList<int>();
+  Node<int>* node1 = new Node<int> (5);
+  Node<int>* node2 = new Node<int> (6);
+  list->addFront(node1);
+  list->addFront(node2);
+  list->display();
+}
+
 int main() {
-  testStack();
+  //testStack();
+  testDoubleLinkedList();
+  
   
 }

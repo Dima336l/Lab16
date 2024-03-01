@@ -16,19 +16,6 @@ public:
     link = NULL;
   }
 
-  Node(T n, Node* p, Node* n) {
-    data = n;
-    prev = p;
-    next = n;
-  }
-
-  Node() {
-    
-  }
-
-  void setData(T item) {
-    this.data = item;
-  }
 
   void setLink(Node* node) {
     this.link = node;
