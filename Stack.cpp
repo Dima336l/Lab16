@@ -2,7 +2,6 @@
 #define STACK_H
 
 #include "Node.cpp"
-#include <bits/stdc++.h>
 
 template <typename T>
 
@@ -16,9 +15,6 @@ public:
   Stack () { top = NULL; }
   void push( T item) {
     Node <T>* node = new Node (item);
-    if (!node) {
-      std::cout <<"Stack Overflow" << std::endl;
-    }
     node->data = item;
     node->link = top;
     top = node;

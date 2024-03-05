@@ -5,20 +5,12 @@
 
 template <typename T>
 
-class Node {
-public:
+struct Node {
   T data;
   Node* link;
-  Node* prev;
-  Node* next;
   Node(T n) {
     data = n;
     link = NULL;
-  }
-
-
-  void setLink(Node* node) {
-    this.link = node;
   }
 };
 

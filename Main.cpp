@@ -17,17 +17,26 @@ void testStack() {
 }
 
 void testDoubleLinkedList() {
-  DoubleLinkedList<int>* list = new DoubleLinkedList<int>();
-  Node<int>* node1 = new Node<int> (5);
-  Node<int>* node2 = new Node<int> (6);
-  list->addFront(node1);
-  list->addFront(node2);
-  list->display();
+  DoublyLinkedList<int>* list = new DoublyLinkedList<int>();
+  list->insertFront(5);
+  list->insertFront(4);
+  list->insertFront(3);
+  std::cout << "List after adding to the front 5, 4, 3 respectively :" << std::endl;
+  list->print();
+  list->clear();
+  std::cout << "List after adding to the back 3, 4, 5 respectively :" << std::endl;
+  list->insertBack(3);
+  list->insertBack(4);
+  list->insertBack(5);
+  list->print();
+  list->removeFront();
+  list->removeBack();
+  std::cout << "List after removing one element from the front and one from the back :" << std::endl;
+  list->print();
+  
 }
 
 int main() {
-  //testStack();
-  testDoubleLinkedList();
-  
-  
+  testStack();
+  testDoubleLinkedList(); 
 }

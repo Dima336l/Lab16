@@ -1,56 +1,99 @@
 #ifndef DOUBLE_LINKED_LIST_H
 #define DOUBLE_LINKED_LIST_H
 
-#include "Node.cpp"
+#include "DoubleNode.cpp"
 
 template <typename T>
 
-class DoubleLinkedList {
-private:
-  Node<T>* head;
-public: 
-  DoubleLinkedList() {
-    head = nullptr;
+class DoublyLinkedList {
+private :
+  DoubleNode<T>* head;
+  DoubleNode<T>* tail;
+  size_t size;
+public :
+  DoublyLinkedList() : head(nullptr), tail(nullptr), size(0){}
+  ~DoublyLinkedList() {
+    clear();
   }
-  void addFront(Node<T>* node) {
+  void insertFront (const T& val) {
+    DoubleNode<T>* newNode = new DoubleNode<T>(val);
     if (head == nullptr) {
-      head = node;
-      head->prev = nullptr;
-      head->next = nullptr;
+      head = tail = newNode;
     } else {
-      node->next = head;
-      head = node;
-      head->prev = nullptr;
+      newNode->next = head;
+      head->prev = newNode;
+      head = newNode;
     }
+    size++;
   }
 
-  void addBack (Node<T>* node) {
+  void insertBack (const T& val) {
+    DoubleNode<T>* newNode = new DoubleNode<T>(val);
+    if (tail == nullptr) {
+      head = tail = newNode;
+    } else {
+      newNode->prev = tail;
+      tail->next = newNode;
+      tail = newNode;
+    }
+    size++;
+  }
+
+  void removeFront() {
     if (head == nullptr) {
-      head = node;
-      head->prev = nullptr;
       return;
     }
-    node.next = nullptr;
+    DoubleNode<T>* temp = head;
+    head = head->next;
+    if (head != nullptr) {
+      head->prev = nullptr;
+    } else {
+      tail = nullptr;
+    }
+    delete temp;
+    size--;
   }
 
-  void display () {
-    std::cout << "Display function called" << std::endl;
-    if (head == nullptr) {
-      std::cout << "The list is empty." << std::endl;
-    } else {
-      Node<T>* temp = head;
-      while (temp != nullptr) {
-	std::cout << temp->data;
-	if (temp->next != nullptr) {
-	  std::cout << " -> ";
-	}
-	temp = temp->next;
-      }
-      std::cout << std::endl;
+  void removeBack() {
+    if (tail == nullptr) {
+      return;
     }
+    DoubleNode<T>* temp = tail;
+    tail = tail->prev;
+    if (tail != nullptr) {
+      tail->next = nullptr;
+    } else {
+      head = nullptr;
+    }
+    delete temp;
+    size--;
+  }
+
+  void clear() {
+    while (head != nullptr) {
+      DoubleNode<T>* temp = head;
+      head = head->next;
+      delete temp;
+    }
+    tail = nullptr;
+    size = 0;
+  }
+
+  void print() const {
+    DoubleNode<T>* currentNode = head;
+    for (size_t i = 0; i < size; i++) {
+      std::string delimeter = (i != (size - 1)) ? " -> " : "";
+      std::cout << currentNode->data << delimeter;
+      currentNode = currentNode->next;
+    }
+    std::cout << std::endl;
+  }
+
+  size_t getSize() const {
+    return size;
   }
 };
-
+  
 
 #endif
 
